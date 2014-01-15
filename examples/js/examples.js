@@ -3,7 +3,8 @@ $(document).ready( function(){
 	$('#def').darkTooltip();
 
 	$('#def-html').darkTooltip({
-		opacity:1
+		opacity:1,
+		gravity:'west'
 	});
 
 	$('#click-me').darkTooltip({
@@ -18,67 +19,56 @@ $(document).ready( function(){
 		gravity:'west',
 		confirm:true,
 		yes:'Sure',
-		no:'No Way'
+		no:'No Way',
+		finalMessage: 'It has been deleted'
+	});
+
+	$('#confirm-light').darkTooltip({
+		trigger:'click',
+		animation:'flipIn',
+		gravity:'west',
+		confirm:true,
+		theme:'light',
+		onYes: function(){
+			alert("This is a custom event for 'Yes' option");
+		},
+		onNo: function(){
+			alert("This is a custom event for 'No' option");
+		}
 	});
 
 	$('#small-s').darkTooltip({
 		size:'small',
 		gravity: 'south'
 	});
-	$('#small-w').darkTooltip({
-		size:'small',
-		gravity: 'west'
-	});
-	$('#small-n').darkTooltip({
-		size:'small',
-		gravity: 'north'
-	});
-	$('#small-e').darkTooltip({
-		size:'small',
-		gravity: 'east'
-	});
-
 	$('#medium-s').darkTooltip({
 		gravity: 'south'
 	});
-	$('#medium-w').darkTooltip({
-		gravity: 'west'
-	});
-	$('#medium-n').darkTooltip({
-		gravity: 'north'
-	});
-	$('#medium-e').darkTooltip({
-		gravity: 'east'
-	});
-
 	$('#large-s').darkTooltip({
 		size:'large',
 		gravity: 'south'
 	});
-	$('#large-w').darkTooltip({
-		size:'large',
+
+	$('#south').darkTooltip({
+		gravity: 'south'
+	});
+	$('#west').darkTooltip({
 		gravity: 'west'
 	});
-	$('#large-n').darkTooltip({
-		size:'large',
+	$('#north').darkTooltip({
 		gravity: 'north'
 	});
-	$('#large-e').darkTooltip({
-		size:'large',
+	$('#east').darkTooltip({
 		gravity: 'east'
 	});
 
 
-	$('#effect-none').darkTooltip({
-		gravity:'west'
-	});
+	$('#effect-none').darkTooltip();
 	$('#effect-flipin').darkTooltip({
-		animation:'flipIn',
-		gravity:'west'
+		animation:'flipIn'
 	});
 	$('#effect-fadein').darkTooltip({
-		animation:'fadeIn',
-		gravity:'west'
+		animation:'fadeIn'
 	});
 
 	$('#theme-dark').darkTooltip();

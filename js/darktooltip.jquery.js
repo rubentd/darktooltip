@@ -22,7 +22,7 @@
 		hide: function(){
 			var tt = this.tooltip;
 			this.delay = setTimeout( function(){
-				tt.css('display', 'none');
+				tt.hide();
 			}, 100);
 		},
 
@@ -66,7 +66,7 @@
 			}
 			//Create tooltip container
 			this.tooltip = $("<ins class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " " 
-				+ this.options.gravity + "'>" + this.content + "<div class = 'tip'></div></ins>");
+				+ this.options.gravity + "'><div>" + this.content + "</div><div class = 'tip'></div></ins>");
 			this.tip = this.tooltip.find(".tip");
 			
 			$(this.bearer).append(this.tooltip);
@@ -77,7 +77,7 @@
 			this.tooltip.css('opacity', this.options.opacity);
 			this.addAnimation();
 			if(this.options.confirm){
-				this.addConfim();
+				this.addConfirm();
 			}
 		},
 
@@ -86,20 +86,20 @@
 			var topPos = 0;
 			switch(this.options.gravity){
 				case 'south':
-					leftPos = this.bearer.offset().left + (this.bearer.outerWidth()/2) - (this.tooltip.outerWidth()/2);
-					topPos = this.bearer.offset().top - this.tooltip.outerHeight();
+					leftPos = this.bearer.offset().left + this.bearer.outerWidth()/2 - this.tooltip.outerWidth()/2;
+					topPos = this.bearer.offset().top - this.tooltip.outerHeight() - this.tip.outerHeight()/2;
 					break;
 				case 'west':
-					leftPos = this.bearer.offset().left + (this.bearer.outerWidth());
+					leftPos = this.bearer.offset().left + this.bearer.outerWidth() + this.tip.outerWidth()/2;
 					topPos = this.bearer.offset().top + this.bearer.outerHeight()/2 - (this.tooltip.outerHeight()/2);
 					break;
 				case 'north':
-					leftPos = this.bearer.offset().left + (this.bearer.outerWidth()/2) - (this.tooltip.outerWidth()/2);
-					topPos = this.bearer.offset().top + this.bearer.outerHeight();
+					leftPos = this.bearer.offset().left + this.bearer.outerWidth()/2 - (this.tooltip.outerWidth()/2);
+					topPos = this.bearer.offset().top + this.bearer.outerHeight() + this.tip.outerHeight()/2;
 					break;
 				case 'east':
-					leftPos = this.bearer.offset().left - (this.tooltip.outerWidth());
-					topPos = this.bearer.offset().top + this.bearer.outerHeight()/2 - (this.tooltip.outerHeight()/2);
+					leftPos = this.bearer.offset().left - this.tooltip.outerWidth() - this.tip.outerWidth()/2;
+					topPos = this.bearer.offset().top + this.bearer.outerHeight()/2 - this.tooltip.outerHeight()/2;
 					break;
 			}
 			this.tooltip.css('left', leftPos);
@@ -118,7 +118,7 @@
 			}else if(this.options.trigger == "click" || this.options.trigger == "onclik"){
 				this.bearer.click( function(e){
 					dt.setPositions();
-					dt.toggle();
+					dt.show();
 					$('html').one('click',function() {
 						dt.toggle();
 					});
@@ -135,7 +135,46 @@
 		},
 
 		addConfirm: function(){
-			
+			this.tooltip.append("<ul class = 'confirm'><li class = 'darktooltip-yes'>" 
+				+ this.options.yes +"</li><li class = 'darktooltip-no'>"+ this.options.no +"</li></ul>");
+			this.setConfirmEvents();
+		},
+
+		setConfirmEvents: function(){
+			var t = this;
+			this.tooltip.find('li.darktooltip-yes').click( function(e){
+				t.onYes();
+				e.stopPropagation();
+			});
+			this.tooltip.find('li.darktooltip-no').click( function(e){
+				t.onNo();
+				e.stopPropagation();
+			});
+		},
+
+		finalMessage: function(){
+			if(this.options.finalMessage){
+				var t = this;
+				t.tooltip.find('div:first').html(this.options.finalMessage);
+				t.tooltip.find('ul').remove();
+				t.setPositions();
+				setTimeout( function(){
+					t.hide();
+					t.setContent();
+				}, 1000);
+			}else{
+				this.hide();
+			}
+		},
+
+		onYes: function(){
+			this.options.onYes();
+			this.finalMessage();
+		},
+
+		onNo: function(){
+			this.options.onNo();
+			this.hide();
 		}
 	}
 
@@ -150,12 +189,14 @@
         size: 'medium',
         gravity: 'south',
         theme: 'dark',
-        confirm: false,
         trigger: 'hover',
         animation: 'none',
         confirm: false,
         yes: 'Yes',
-        no: 'No'
+        no: 'No',
+        finalMsg: '',
+        onYes: function(){},
+        onNo: function(){}
     };
 
 })(jQuery);
