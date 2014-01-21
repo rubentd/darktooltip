@@ -15,15 +15,14 @@
 
 	DarkTooltip.prototype = {
 		show: function(){
+			//Close all other tooltips
+			$('ins.dark-tooltip').hide();
 			window.clearTimeout(this.delay);
 			this.tooltip.css('display', 'block');
 		},
 
 		hide: function(){
-			var tt = this.tooltip;
-			this.delay = setTimeout( function(){
-				tt.hide();
-			}, 100);
+			this.tooltip.hide();
 		},
 
 		toggle: function(){
@@ -52,8 +51,11 @@
 		setContent: function(){
 			$(this.bearer).css('cursor', 'pointer');
 			//Get tooltip content
-			this.content = this.bearer.attr("data-tooltip");
-			if(this.content == undefined){
+			if(this.options.content){
+				this.content = this.options.content;
+			}else if(this.bearer.attr("data-tooltip")){
+				this.content = this.bearer.attr("data-tooltip");
+			}else{
 				console.log("No content for tooltip: " + this.bearer.selector);
 				return;
 			}
@@ -117,10 +119,11 @@
 				});
 			}else if(this.options.trigger == "click" || this.options.trigger == "onclik"){
 				this.bearer.click( function(e){
+					e.preventDefault();
 					dt.setPositions();
-					dt.show();
+					dt.toggle();
 					$('html').one('click',function() {
-						dt.toggle();
+						dt.hide();
 					});
 					e.stopPropagation();
 				});
@@ -161,31 +164,34 @@
 				setTimeout( function(){
 					t.hide();
 					t.setContent();
-				}, 1000);
+				}, t.options.finalMessageDuration);
 			}else{
 				this.hide();
 			}
 		},
 
 		onYes: function(){
-			this.options.onYes();
+			this.options.onYes(this.bearer); 
 			this.finalMessage();
 		},
 
 		onNo: function(){
-			this.options.onNo();
+			this.options.onNo(this.bearer);
 			this.hide();
 		}
 	}
 
 	$.fn.darkTooltip = function(options) {
-		options = $.extend({}, $.fn.darkTooltip.defaults, options);
-		var tooltip = new DarkTooltip(this, options);
-		tooltip.activate();
+		this.each(function(){
+			options = $.extend({}, $.fn.darkTooltip.defaults, options);
+			var tooltip = new DarkTooltip($(this), options);
+			tooltip.activate();
+		});	
 	}
 
 	$.fn.darkTooltip.defaults = {
         opacity: 0.9,
+        content:'',
         size: 'medium',
         gravity: 'south',
         theme: 'dark',
@@ -194,7 +200,8 @@
         confirm: false,
         yes: 'Yes',
         no: 'No',
-        finalMsg: '',
+        finalMessage: '',
+        finalMessageDuration: 1000,
         onYes: function(){},
         onNo: function(){}
     };

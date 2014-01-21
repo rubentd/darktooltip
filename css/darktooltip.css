@@ -29,7 +29,7 @@
 .dark-tooltip.east.large .tip{ border-width: 12px 0 12px 14px; margin-top:-12px;}
 
 /* confirm */
-.dark-tooltip ul.confirm{ list-style-type:none;margin-top:5px; }
+.dark-tooltip ul.confirm{ list-style-type:none;margin-top:5px;display:inline-block;margin:0 auto; }
 .dark-tooltip ul.confirm li{ padding:10px;float:left;margin:5px;min-width:25px;-webkit-border-radius:3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;}
 
 /* themes */
@@ -105,13 +105,13 @@
     70% {transform: perspective(400px) rotateY(-5deg);}
     100% {transform: perspective(400px) rotateY(0deg);opacity: 1;}
 }
-.flipIn { -webkit-backface-visibility: visible !important;-moz-backface-visibility: visible !important;-o-backface-visibility: visible !important;backface-visibility: visible !important}
-.flipIn.south, .flipIn.north { -webkit-animation-name: flipInUp;-moz-animation-name: flipInUp;-o-animation-name: flipInUp;animation-name: flipInUp; }
-.flipIn.west, .flipIn.east { -webkit-animation-name: flipInRight;-moz-animation-name: flipInRight;-o-animation-name: flipInUp;animation-name: flipInRight; }
+.flipIn { -webkit-backface-visibility: visible !important; -moz-backface-visibility: visible !important; -o-backface-visibility: visible !important; backface-visibility: visible !important}
+.flipIn.south, .flipIn.north { -webkit-animation-name: flipInUp; -moz-animation-name: flipInUp; -o-animation-name: flipInUp; animation-name: flipInUp; }
+.flipIn.west, .flipIn.east { -webkit-animation-name: flipInRight; -moz-animation-name: flipInRight; -o-animation-name: flipInRight; animation-name: flipInRight; }
 
 @-webkit-keyframes fadeIn { 0% {opacity: 0;} 100% {opacity: 1;}}
 @-moz-keyframes fadeIn { 0% {opacity: 0;} 100% {opacity: 1;}}
 @-o-keyframes fadeIn {0% {opacity: 0;}100% {opacity: 1;}}
 @keyframes fadeIn {0% {opacity: 0;}100% {opacity: 1;}}
 
-.fadeIn{-webkit-animation-name: fadeIn;-moz-animation-name: fadeIn;-o-animation-name: fadeIn;animation-name: fadeIn;}
+.fadeIn{-webkit-animation-name: fadeIn; -moz-animation-name: fadeIn; -o-animation-name: fadeIn; animation-name: fadeIn;}
