@@ -1,4 +1,5 @@
 darktooltip
 ===========
 
-simple jQuery tooltip with confirmation
+A simple customizable tooltip with confirm option and effects
+
