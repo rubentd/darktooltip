@@ -86,22 +86,28 @@
 		setPositions: function(){
 			var leftPos = 0;
 			var topPos = 0;
+			var bearerTop = this.bearer.offset().top;
+			var bearerLeft = this.bearer.offset().left;
+			if(this.bearer.css('position')=='fixed' || this.bearer.css('position')=='absolute'){
+				bearerTop=0;
+				bearerLeft=0;
+			}
 			switch(this.options.gravity){
 				case 'south':
-					leftPos = this.bearer.offset().left + this.bearer.outerWidth()/2 - this.tooltip.outerWidth()/2;
-					topPos = this.bearer.offset().top - this.tooltip.outerHeight() - this.tip.outerHeight()/2;
+					leftPos = bearerLeft + this.bearer.outerWidth()/2 - this.tooltip.outerWidth()/2;
+					topPos = bearerTop - this.tooltip.outerHeight() - this.tip.outerHeight()/2;
 					break;
 				case 'west':
-					leftPos = this.bearer.offset().left + this.bearer.outerWidth() + this.tip.outerWidth()/2;
-					topPos = this.bearer.offset().top + this.bearer.outerHeight()/2 - (this.tooltip.outerHeight()/2);
+					leftPos = bearerLeft + this.bearer.outerWidth() + this.tip.outerWidth()/2;
+					topPos = bearerTop + this.bearer.outerHeight()/2 - (this.tooltip.outerHeight()/2);
 					break;
 				case 'north':
-					leftPos = this.bearer.offset().left + this.bearer.outerWidth()/2 - (this.tooltip.outerWidth()/2);
-					topPos = this.bearer.offset().top + this.bearer.outerHeight() + this.tip.outerHeight()/2;
+					leftPos = bearerLeft + this.bearer.outerWidth()/2 - (this.tooltip.outerWidth()/2);
+					topPos = bearerTop + this.bearer.outerHeight() + this.tip.outerHeight()/2;
 					break;
 				case 'east':
-					leftPos = this.bearer.offset().left - this.tooltip.outerWidth() - this.tip.outerWidth()/2;
-					topPos = this.bearer.offset().top + this.bearer.outerHeight()/2 - this.tooltip.outerHeight()/2;
+					leftPos = bearerLeft - this.tooltip.outerWidth() - this.tip.outerWidth()/2;
+					topPos = bearerTop + this.bearer.outerHeight()/2 - this.tooltip.outerHeight()/2;
 					break;
 			}
 			this.tooltip.css('left', leftPos);

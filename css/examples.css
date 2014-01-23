@@ -61,6 +61,12 @@ section{
 	text-align:center;
 }
 
+.box.fixed-box{
+	position:fixed;
+	right:50px;
+	top:50px;
+}
+
 hr{
 	margin:20px 0;
 	color: #ddd;

@@ -1,5 +1,9 @@
 $(document).ready( function(){
 
+	$('#fixed').darkTooltip({
+		gravity:'north'
+	});
+
 	$('#def').darkTooltip();
 
 	$('#def-html').darkTooltip({
