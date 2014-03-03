@@ -1,5 +1,5 @@
 /* 
- * DarkTooltip v0.1.5
+ * DarkTooltip v0.1.6
  * Simple customizable tooltip with confirm option and 3d effects
  * (c)2014 Rubén Torres - rubentdlh@gmail.com
  * Released under the MIT license
@@ -56,7 +56,6 @@
 			}else if(this.bearer.attr("data-tooltip")){
 				this.content = this.bearer.attr("data-tooltip");
 			}else{
-				console.log("No content for tooltip: " + this.bearer.selector);
 				return;
 			}
 			if(this.content.charAt(0) == '#'){

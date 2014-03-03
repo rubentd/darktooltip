@@ -5,7 +5,7 @@
 .dark-tooltip.large{ padding:16px; font-size:16px; max-width:250px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
 
 /* Tips */
-.dark-tooltip .tip{ content: ""; position: absolute; width:0; height:0; border-style: solid; line-height: 0px; }
+.dark-tooltip .tip{ transform: scale(1.01); -webkit-transform: scale(1.01); -moz-transform: scale(1.01); content: ""; position: absolute; width:0; height:0; border-style: solid; line-height: 0px; }
 
 .dark-tooltip.south .tip{ left:50%; top:100%;}
 .dark-tooltip.west .tip{ left:0; top:50%;}
