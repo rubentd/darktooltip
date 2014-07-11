@@ -7,29 +7,21 @@ a, a:hover, a:visited{
 	color:#666;
 }
 
-img{
-	width:auto !important;
-}
-
-#radios-dummy label{
-	margin: 0 5px;
-}
-
 .logo{
 	width:150px;
 	height:86px;
 	display:inline-block;
 	background-image:url(../img/logo.png);
 	position:absolute;
-	left:450px;
-	top:100px;
+	left:500px;
+	top:20px;
 }
 
 .logo a{
 	color:#fff;
 	position:relative;
-	top:20px;
-	left:50px;
+	top:25px;
+	left:35px;
 }
 
 h1{
@@ -71,8 +63,8 @@ section{
 
 .box.fixed-box{
 	position:fixed;
-	right:250px;
-	top:270px;
+	right:50px;
+	top:50px;
 }
 
 hr{
@@ -84,7 +76,7 @@ hr{
 }
 
 .code{
-	width:90%;
+	width:650px;
 }
 
 table.options th{
