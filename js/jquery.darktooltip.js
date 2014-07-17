@@ -1,5 +1,5 @@
 /* 
- * DarkTooltip v0.1.8
+ * DarkTooltip v0.2.0
  * Simple customizable tooltip with confirm option and 3d effects
  * (c)2014 Rubén Torres - rubentdlh@gmail.com
  * Released under the MIT license
@@ -200,11 +200,11 @@
 	}
 
 	$.fn.darkTooltip = function(options) {
-		this.each(function(){
+		return this.each(function(){
 			options = $.extend({}, $.fn.darkTooltip.defaults, options);
 			var tooltip = new DarkTooltip($(this), options);
 			tooltip.activate();
-		});	
+		});
 	}
 
 	$.fn.darkTooltip.defaults = {
