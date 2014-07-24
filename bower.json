@@ -7,8 +7,12 @@
         "confirm"
     ],
     "version": "0.2.2",
-    "author": {
-        "name": "Ruben Torres"
+    "main": [
+        "js/jquery.darktooltip.js",
+        "css/darktooltip.css"
+    ],
+    "authors": {
+        "Ruben Torres"
     },
     "maintainers": [
         {
