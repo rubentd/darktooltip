@@ -79,8 +79,12 @@
 			}else{
 				this.contentType='text';
 			}
+			tooltipId = "";
+			if(this.bearer.attr("id") != ""){
+				tooltipId = "id='darktooltip-" + this.bearer.attr("id") + "'";
+			}
 			//Create tooltip container
-			this.tooltip = $("<ins class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " " 
+			this.tooltip = $("<ins " + tooltipId + " class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " " 
 				+ this.options.gravity + "'><div>" + this.content + "</div><div class = 'tip'></div></ins>");
 			this.tip = this.tooltip.find(".tip");
 			
