@@ -15,8 +15,12 @@
 	}
 
 	DarkTooltip.prototype = {
+
 		show: function(){
 			var dt = this;
+			if(this.options.modal){
+				this.modalLayer.css('display', 'block');
+			}
 			//Close all other tooltips
 			this.tooltip.css('display', 'block');
 			//Set event to prevent tooltip from closig when mouse is over the tooltip
@@ -36,6 +40,9 @@
 			this.hideEvent = setTimeout( function(){
 				dt.tooltip.hide();
 			}, 100);
+			if(dt.options.modal){
+				dt.modalLayer.hide();
+			}
 		},
 
 		toggle: function(){
@@ -83,11 +90,14 @@
 			if(this.bearer.attr("id") != ""){
 				tooltipId = "id='darktooltip-" + this.bearer.attr("id") + "'";
 			}
+			//Create modal layer
+			this.modalLayer = $("<ins class='darktooltip-modal-layer'></ins>");
 			//Create tooltip container
 			this.tooltip = $("<ins " + tooltipId + " class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " " 
 				+ this.options.gravity + "'><div>" + this.content + "</div><div class = 'tip'></div></ins>");
 			this.tip = this.tooltip.find(".tip");
 
+			$("body").append(this.modalLayer);
 			$("body").append(this.tooltip);
 
 			//Adjust size for html tooltip
@@ -129,17 +139,17 @@
 
 		setEvents: function(){
 			var dt = this;
-      var delay = dt.options.hoverDelay;
-      var setTimeoutConst;
+	 		var delay = dt.options.hoverDelay;
+	  		var setTimeoutConst;
 			if(dt.mouseOverMode){
 				this.bearer.mouseover( function(){
-          //Timeout for hover mouse delay
-          setTimeoutConst = setTimeout( function(){
-            dt.setPositions();
-            dt.show();
-          }, delay);
+					//Timeout for hover mouse delay
+					setTimeoutConst = setTimeout( function(){
+						dt.setPositions();
+						dt.show();
+					}, delay);
 				}).mouseout( function(){
-          clearTimeout(setTimeoutConst );
+					clearTimeout(setTimeoutConst );
 					dt.hide();
 				});
 			}else if(this.options.trigger == "click" || this.options.trigger == "onclik"){
@@ -218,21 +228,22 @@
 	}
 
 	$.fn.darkTooltip.defaults = {
-        opacity: 0.9,
-        content:'',
-        size: 'medium',
-        gravity: 'south',
-        theme: 'dark',
-        trigger: 'hover',
-        animation: 'none',
-        confirm: false,
-        yes: 'Yes',
-        no: 'No',
-        finalMessage: '',
-        finalMessageDuration: 1000,
-        onYes: function(){},
-        onNo: function(){},
-        hoverDelay: 0
-    };
+		animation: 'none',
+		confirm: false,
+		content:'',
+		finalMessage: '',
+		finalMessageDuration: 1000,
+		gravity: 'south',
+		hoverDelay: 0,
+		modal: false,
+		no: 'No',
+		onNo: function(){},
+		onYes: function(){},
+		opacity: 0.9,
+		size: 'medium',
+		theme: 'dark',
+		trigger: 'hover',
+		yes: 'Yes',
+	};
 
 })(jQuery);

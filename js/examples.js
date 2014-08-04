@@ -27,6 +27,14 @@ $(document).ready( function(){
 		finalMessage: 'It has been deleted'
 	});
 
+	$('#modal').darkTooltip({
+		trigger:'click',
+		animation:'flipIn',
+		gravity:'west',
+		modal: true,
+		theme:'light'
+	});
+
 	$('#confirm-light').darkTooltip({
 		trigger:'click',
 		animation:'flipIn',
