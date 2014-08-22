@@ -1,5 +1,5 @@
 /* 
- * DarkTooltip v0.3.1
+ * DarkTooltip v0.3.2
  * Simple customizable tooltip with confirm option and 3d effects
  * (c)2014 Rubén Torres - rubentdlh@gmail.com
  * Released under the MIT license
@@ -43,6 +43,7 @@
 			if(dt.options.modal){
 				dt.modalLayer.hide();
 			}
+			this.options.onClose();
 		},
 
 		toggle: function(){
@@ -80,8 +81,16 @@
 				return;
 			}
 			if(this.content.charAt(0) == '#'){
-				$(this.content).hide();
-				this.content = $(this.content).html();
+				if (this.options.delete_content){
+					var content = $(this.content).html();
+					$(this.content).html('');
+					this.content = content;
+					delete content;
+				}
+				else{
+					$(this.content).hide();
+					this.content = $(this.content).html();
+				}
 				this.contentType='html';
 			}else{
 				this.contentType='text';
@@ -133,8 +142,12 @@
 					topPos += this.bearer.outerHeight()/2 - this.tooltip.outerHeight()/2;
 					break;
 			}
-			this.tooltip.css('left', leftPos);
-			this.tooltip.css('top', topPos);
+			if(this.options.autoLeft){
+				this.tooltip.css('left', leftPos);
+			}
+			if(this.options.autoTop){
+				this.tooltip.css('top', topPos);
+			}
 		},
 
 		setEvents: function(){
@@ -244,6 +257,9 @@
 		theme: 'dark',
 		trigger: 'hover',
 		yes: 'Yes',
+		autoTop: true,
+		autoLeft: true,
+		onClose: function(){}
 	};
 
 })(jQuery);
