@@ -1,7 +1,7 @@
 /* 
  * DarkTooltip v0.3.2
  * Simple customizable tooltip with confirm option and 3d effects
- * (c)2014 Rubén Torres - rubentdlh@gmail.com
+ * (c)2014 RubÃ©n Torres - rubentdlh@gmail.com
  * Released under the MIT license
  */
 
@@ -155,13 +155,13 @@
 	 		var delay = dt.options.hoverDelay;
 	  		var setTimeoutConst;
 			if(dt.mouseOverMode){
-				this.bearer.mouseover( function(){
+				this.bearer.mouseenter( function(){
 					//Timeout for hover mouse delay
 					setTimeoutConst = setTimeout( function(){
 						dt.setPositions();
 						dt.show();
 					}, delay);
-				}).mouseout( function(){
+				}).mouseleave( function(){
 					clearTimeout(setTimeoutConst );
 					dt.hide();
 				});
