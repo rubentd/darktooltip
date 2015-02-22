@@ -3,6 +3,8 @@ darktooltip
 
 A simple customizable tooltip with confirm option and effects
 
+![bower badge](https://badge.fury.io/bo/darktooltip.svg "bower badge")
+
 ###Usage
 
 ```html
