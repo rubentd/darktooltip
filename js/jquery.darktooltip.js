@@ -1,15 +1,15 @@
 /* 
- * DarkTooltip v0.3.2
+ * DarkTooltip v0.3.2.1
  * Simple customizable tooltip with confirm option and 3d effects
  * (c)2014 Rubén Torres - rubentdlh@gmail.com
  * Released under the MIT license
  */
 
 (function($) {
-
 	function DarkTooltip(element, options){
 		this.bearer = element;
 		this.options = options;
+		this.showEvent;
 		this.hideEvent;
 		this.mouseOverMode=(this.options.trigger == "hover" || this.options.trigger == "mouseover" || this.options.trigger == "onmouseover");
 	}
@@ -32,6 +32,16 @@
 					clearTimeout(dt.hideEvent);
 					dt.hide();
 				});
+			}
+			else {
+				if (this.options.autoClose) {
+					if (this.showEvent) {
+						clearTimeout(dt.showEvent);
+					}
+					dt.showEvent = setTimeout(function(){
+						dt.tooltip.hide();
+					}, this.options.autoCloseDuration);
+				}
 			}
 		},
 
@@ -93,7 +103,10 @@
 				}
 				this.contentType='html';
 			}else{
-				this.contentType='text';
+				this.contentType = this.options.defaultContentType;
+				if (this.contentType == '') {
+					this.contentType='text';
+				}
 			}
 			tooltipId = "";
 			if(this.bearer.attr("id") != ""){
@@ -172,6 +185,9 @@
 				this.bearer.click( function(e){
 					e.preventDefault();
 					dt.setPositions();
+					if (dt.options.onlyOne) {
+						$('.dark-tooltip:visible').hide();
+					}
 					dt.toggle();
 					e.stopPropagation();
 				});
@@ -259,7 +275,11 @@
 		yes: 'Yes',
 		autoTop: true,
 		autoLeft: true,
-		onClose: function(){}
+		onClose: function(){},
+		onlyOne: false,
+		autoClose: false,
+		autoCloseDuration: 3000,
+		defaultContentType: 'html'
 	};
 
 })(jQuery);

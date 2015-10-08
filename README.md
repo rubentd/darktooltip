@@ -46,6 +46,9 @@ finalMessage|	A message that appears at the end of the action for the confirm	|�
 finalMessageDuration|	Duration of the final message in ms	|1000
 onYes|	Function that is triggered when clicking ‘Yes’ on confirm	|empty
 onNo |	Function that is triggered when clicking ‘No’ on confirm	|empty
+onlyOne | Always make the only one of the tool tip is open |false
+autoClose | After a specified time has elapsed, it closed with automatic | false
+autoCloseDuration |	Number of milliseconds elapsed before it closes automatically | 3000
 
 ###Demo and examples
 [rubentd.com/darktooltip](http://rubentd.com/darktooltip)
