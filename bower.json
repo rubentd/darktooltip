@@ -6,7 +6,7 @@
         "tooltip",
         "confirm"
     ],
-    "version": "0.4.0",
+    "version": "0.4.1",
     "main": [
         "js/jquery.darktooltip.js",
         "css/darktooltip.css"
