@@ -1,5 +1,5 @@
-/* 
- * DarkTooltip v0.3.2
+/*
+ * DarkTooltip v0.4.0
  * Simple customizable tooltip with confirm option and 3d effects
  * (c)2014 Rubén Torres - rubentdlh@gmail.com
  * Released under the MIT license
@@ -102,7 +102,7 @@
 			//Create modal layer
 			this.modalLayer = $("<ins class='darktooltip-modal-layer'></ins>");
 			//Create tooltip container
-			this.tooltip = $("<ins " + tooltipId + " class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " " 
+			this.tooltip = $("<ins " + tooltipId + " class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " "
 				+ this.options.gravity + "'><div>" + this.content + "</div><div class = 'tip'></div></ins>");
 			this.tip = this.tooltip.find(".tip");
 
@@ -189,7 +189,7 @@
 		},
 
 		addConfirm: function(){
-			this.tooltip.append("<ul class = 'confirm'><li class = 'darktooltip-yes'>" 
+			this.tooltip.append("<ul class = 'confirm'><li class = 'darktooltip-yes'>"
 				+ this.options.yes +"</li><li class = 'darktooltip-no'>"+ this.options.no +"</li></ul>");
 			this.setConfirmEvents();
 		},
