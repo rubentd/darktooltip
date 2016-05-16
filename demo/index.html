@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DarkTooltip</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/examples.css">
+    <link rel="stylesheet" href="../dist/darktooltip.css">
+    <link rel="icon" type="image/png" href="http://rubentd.com/img/favicon.png">
+</head>
+
+<body id="home">
+
+	<main class = "main">
+
+    	<h1>DarkTooltip</h1>
+    	<section>
+    		<div class = "example">
+				<h2>Default</h2>
+	    		<div id="def" class="box" data-tooltip="Hello world" >default</div>
+	    	</div>
+    	</section>
+
+		<section>
+			<div class="example">
+	    		<h2>HTML content</h2>
+		    	<div id="def-html" class="box" data-tooltip="#html-content">
+					html
+		    	</div>
+		    	<div id = "html-content" style="display:none;">
+		    		<h2>wow <strong>such content</strong> very html</h2>
+		    		<img src="http://bit.ly/18VOk3C">
+		    	</div>
+	    	</div>
+	    </section>
+
+    	<hr>
+
+		<section>
+			<div class="example">
+	    		<h2>Confirm</h2>
+		    	<div id="confirm" class="box" data-tooltip="Are you sure?">
+					Click to delete
+		    	</div>
+	    	</div>
+	    </section>
+	    <br><br><br><br>
+	    <section>
+			<div class="example">
+	    		<h2>Confirm with custom events</h2>
+		    	<div id="confirm-light" class="box" data-tooltip="For real?">
+					Click me too
+		    	</div>
+	    	</div>
+	    </section>
+
+    	<hr>
+
+	    <section>
+			<div class="example">
+	    		<h2>Modal (new)</h2>
+		    	<div id="modal" class="box" data-tooltip="Modal content">
+					Click me<br> I'm modal
+		    	</div>
+	    	</div>
+	    </section>
+
+    	<hr>
+
+    	<section>
+    		<div class="example">
+				<h2>Sizes</h2>
+				<div id="small-s" class="box" data-tooltip="Hey!">
+					Small
+		    	</div>
+		    	<div id="medium-s" class="box" data-tooltip="Listen!">
+					medium
+		    	</div>
+		    	<div id="large-s" class="box" data-tooltip="Watch out!">
+					large
+		    	</div>
+	    	</div>
+    	</section>
+
+    	<hr>
+
+    	<section>
+    		<div class="example">
+				<h2>Gravity</h2>
+				<div id="south" class="box" data-tooltip="Hey!">
+					gravity:south
+		    	</div>
+		    	<div id="west" class="box" data-tooltip="Listen!">
+					gravity:west
+		    	</div>
+				<div id="north" class="box" data-tooltip="Watch out!">
+					gravity:north
+				</div>
+		    	<div id="east" class="box" data-tooltip="Look!">
+					gravity:east
+		    	</div>
+	    	</div>
+    	</section>
+
+    	<hr>
+
+    	<section>
+	    	<div class="example">
+				<h2>Animations</h2>
+				<div id = "effect-none" class = "box" data-tooltip="Simple but effective">
+					none
+		    	</div>
+		    	<div id = "effect-flipin" class = "box" data-tooltip="Whooo!">
+					flipIn
+		    	</div>
+		    	<div id = "effect-fadein" class = "box" data-tooltip="Hello there">
+					fadeIn
+		    	</div>
+		    </div>
+    	</section>
+
+    	<hr>
+
+    	<section>
+	    	<div class="example">
+				<h2>Themes</h2>
+		    	<div id = "theme-dark" class = "box" data-tooltip="In Western culture, white and black traditionally symbolize the dichotomy of good and evil">
+					dark
+		    	</div>
+		    	<div id = "theme-light" class = "box" data-tooltip="Metaphorically related to light and darkness and day and night">
+					light
+		    	</div>
+	    	</div>
+    	</section>
+
+    </main>
+
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="../dist/jquery.darktooltip.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function(){
+
+    	$('#def').darkTooltip();
+
+    	$('#def-html').darkTooltip({
+    		opacity:1,
+    		gravity:'west'
+    	});
+
+    	$('#click-me').darkTooltip({
+    		trigger:'click',
+    		animation:'flipIn',
+    		gravity:'west'
+    	});
+
+    	$('#confirm').darkTooltip({
+    		trigger:'click',
+    		animation:'flipIn',
+    		gravity:'west',
+    		confirm:true,
+    		yes:'Sure',
+    		no:'No Way',
+    		finalMessage: 'It has been deleted'
+    	});
+
+    	$('#modal').darkTooltip({
+    		trigger:'click',
+    		animation:'flipIn',
+    		gravity:'west',
+    		modal: true,
+    		theme:'light'
+    	});
+
+    	$('#confirm-light').darkTooltip({
+    		trigger:'click',
+    		animation:'flipIn',
+    		gravity:'west',
+    		confirm:true,
+    		theme:'light',
+    		onYes: function(){
+    			alert("This is a custom event for 'Yes' option");
+    		},
+    		onNo: function(){
+    			alert("This is a custom event for 'No' option");
+    		}
+    	});
+
+    	$('#small-s').darkTooltip({
+    		size:'small',
+    		gravity: 'south'
+    	});
+    	$('#medium-s').darkTooltip({
+    		gravity: 'south'
+    	});
+    	$('#large-s').darkTooltip({
+    		size:'large',
+    		gravity: 'south'
+    	});
+
+    	$('#south').darkTooltip({
+    		gravity: 'south'
+    	});
+    	$('#west').darkTooltip({
+    		gravity: 'west'
+    	});
+    	$('#north').darkTooltip({
+    		gravity: 'north'
+    	});
+    	$('#east').darkTooltip({
+    		gravity: 'east'
+    	});
+
+
+    	$('#effect-none').darkTooltip();
+    	$('#effect-flipin').darkTooltip({
+    		animation:'flipIn'
+    	});
+    	$('#effect-fadein').darkTooltip({
+    		animation:'fadeIn'
+    	});
+
+    	$('#theme-dark').darkTooltip();
+    	$('#theme-light').darkTooltip({
+    		theme:'light'
+    	});
+
+    });
+  </script>
+
+</body>
+</html>
