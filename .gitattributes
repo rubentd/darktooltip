@@ -1,2 +1,2 @@
 demo/* linguist-documentation
-src/*.scss linguist-vendored
+src/*.sass linguist-vendored
