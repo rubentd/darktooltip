@@ -4,7 +4,7 @@ darktooltip
 
 A simple customizable tooltip with confirm option and effects
 
-###Usage
+### Usage
 
 ```html
 <div style="padding:200px;">
@@ -29,7 +29,7 @@ $(document).ready( function(){
 </script>
 ```
 
-###Options
+### Options
 Option | Values | Default
 ------ | ------ | -------
 opacity| 0 – 1  | 0.9
@@ -47,7 +47,7 @@ finalMessageDuration|	Duration of the final message in ms	|1000
 onYes|	Function that is triggered when clicking ‘Yes’ on confirm	|empty
 onNo |	Function that is triggered when clicking ‘No’ on confirm	|empty
 
-###Demo and examples
+### Demo and examples
 [rubentd.com/darktooltip](http://rubentd.com/darktooltip)
 
 
