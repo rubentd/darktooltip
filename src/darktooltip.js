@@ -179,6 +179,12 @@
 					dt.hide();
 				})
 			}
+
+			if (this.options.trackOnResize){
+				$(window).resize( function (){
+					dt.setPositions();
+				});
+			}
 		},
 
 		activate: function(){
@@ -259,7 +265,8 @@
 		yes: 'Yes',
 		autoTop: true,
 		autoLeft: true,
-		onClose: function(){}
+		onClose: function(){},
+		trackOnResize: true
 	};
 
 })(jQuery);
