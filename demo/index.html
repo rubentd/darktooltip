@@ -131,6 +131,17 @@
 					light
 		    	</div>
 	    	</div>
+		</section>
+		
+		<hr>
+
+    	<section>
+	    	<div class="example">
+				<h2>Dismiss only on click close button</h2>
+		    	<div id = "dismiss-close-button" class = "box" data-tooltip="Ciao a tutti!">
+					close button
+		    	</div>
+	    	</div>
     	</section>
 
     </main>
@@ -222,6 +233,15 @@
     	$('#theme-dark').darkTooltip();
     	$('#theme-light').darkTooltip({
     		theme:'light'
+		});
+		
+		$('#dismiss-close-button').darkTooltip({
+    		trigger:'click',
+    		animation:'flipIn',
+    		gravity:'west',
+			theme:'light',
+			showCloseButton: true,
+			hideOnClickOutside: false,
     	});
 
     });
