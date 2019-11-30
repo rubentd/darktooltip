@@ -118,6 +118,9 @@
 			if(this.options.confirm){
 				this.addConfirm();
 			}
+			if (this.options.showCloseButton) {
+				this.addCloseButton();
+			}
 		},
 
 		setPositions: function(){
@@ -175,9 +178,17 @@
 					dt.toggle();
 					e.stopPropagation();
 				});
-				$('html').click(function(){
-					dt.hide();
-				})
+				if (this.options.hideOnClickOutside) {
+					$('html').click(function () {
+						dt.hide();
+					});
+				}
+			}
+
+			if (this.options.trackOnResize){
+				$(window).resize( function (){
+					dt.setPositions();
+				});
 			}
 		},
 
@@ -194,6 +205,11 @@
 			this.setConfirmEvents();
 		},
 
+		addCloseButton: function () {
+			this.tooltip.append("<span class = 'darktooltip-close-button'><span>x</span></span>");
+			this.setCloseEvent();
+		},
+
 		setConfirmEvents: function(){
 			var dt = this;
 			this.tooltip.find('li.darktooltip-yes').click( function(e){
@@ -202,6 +218,14 @@
 			});
 			this.tooltip.find('li.darktooltip-no').click( function(e){
 				dt.onNo();
+				e.stopPropagation();
+			});
+		},
+
+		setCloseEvent: function () {
+			var dt = this;
+			this.tooltip.find('.darktooltip-close-button').click(function (e) {
+				dt.hide();
 				e.stopPropagation();
 			});
 		},
@@ -259,7 +283,10 @@
 		yes: 'Yes',
 		autoTop: true,
 		autoLeft: true,
-		onClose: function(){}
+		onClose: function(){},
+		trackOnResize: true,
+		hideOnClickOutside: true,
+		showCloseButton: false,
 	};
 
 })(jQuery);
