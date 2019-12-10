@@ -121,6 +121,9 @@
 			if (this.options.showCloseButton) {
 				this.addCloseButton();
 			}
+			if(this.options.customClass){
+				this.addCustomClass();
+			}
 		},
 
 		setPositions: function(){
@@ -210,6 +213,10 @@
 			this.setCloseEvent();
 		},
 
+		addCustomClass: function(){
+			this.tooltip.addClass(this.options.customClass);
+		},
+
 		setConfirmEvents: function(){
 			var dt = this;
 			this.tooltip.find('li.darktooltip-yes').click( function(e){
@@ -287,6 +294,7 @@
 		trackOnResize: true,
 		hideOnClickOutside: true,
 		showCloseButton: false,
+		customClass: '',
 	};
 
 })(jQuery);
