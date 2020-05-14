@@ -103,7 +103,8 @@
 			this.modalLayer = $("<ins class='darktooltip-modal-layer'></ins>");
 			//Create tooltip container
 			this.tooltip = $("<ins " + tooltipId + " class = 'dark-tooltip " + this.options.theme + " " + this.options.size + " "
-				+ this.options.gravity + "'><div>" + this.content + "</div><div class = 'tip'></div></ins>");
+				+ this.options.gravity + "'><div>" + this.content + "</div>"+ ((this.options.arrow)?"<div class = 'tip'></div>":"")
+				+"</ins>");
 			this.tip = this.tooltip.find(".tip");
 
 			$("body").append(this.modalLayer);
@@ -259,7 +260,8 @@
 		yes: 'Yes',
 		autoTop: true,
 		autoLeft: true,
-		onClose: function(){}
+		onClose: function(){},
+		arrow: true
 	};
 
 })(jQuery);
