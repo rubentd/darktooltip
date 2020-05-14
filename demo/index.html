@@ -133,6 +133,20 @@
 	    	</div>
     	</section>
 
+    	<hr>
+
+    	<section>
+	    	<div class="example">
+				<h2>Arrow</h2>
+		    	<div id = "has-arrow" class = "box" data-tooltip="This tooltip has arrow">
+					true
+		    	</div>
+		    	<div id = "no-arrow" class = "box" data-tooltip="This tooltip doesn't have arrow">
+					false
+		    	</div>
+	    	</div>
+    	</section>
+
     </main>
 
 	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -222,6 +236,11 @@
     	$('#theme-dark').darkTooltip();
     	$('#theme-light').darkTooltip({
     		theme:'light'
+    	});
+
+    	$('#has-arrow').darkTooltip();
+    	$('#no-arrow').darkTooltip({
+    		arrow:false
     	});
 
     });
